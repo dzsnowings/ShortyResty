@@ -6,7 +6,7 @@ import (
     "net/http"
     "net/url"
     "encoding/json"
-	"math/rand"
+    "math/rand"
 )
 
 // LongUrl formats long URLs for easy conversion to and from JSON
