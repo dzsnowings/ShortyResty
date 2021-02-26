@@ -14,7 +14,7 @@ type LongUrl struct {
     Long_url string `json:"url"`
 }
 
-// ShortUrl formats short URLs for easy converstion to and from JSON
+// ShortUrl formats short URLs for easy conversion to and from JSON
 type ShortUrl struct {
 	Short_url string `json:"short_url"`
 }
