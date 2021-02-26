@@ -12,7 +12,7 @@ To redirect from a shortened URL:
 2. You will be redirected to the long URL that corresponds to the short URL with the given ID
 
 ## Tests
-Example POST request using curl: 
+_**Example POST request using curl:**_
 ```
 curl -v -H "Content-Type: application/json" -X POST -d "{\"url\": \"http://example.com/verylonguselessURLthatdoesnotseemtoend/123\"}" http://127.0.0.1:8080/shorten
 ```
@@ -39,7 +39,8 @@ Note: Unnecessary use of -X or --request, POST is already inferred.
 * Connection #0 to host 127.0.0.1 left intact
 ```
 
-Example GET request using curl:
+
+_**Example GET request using curl:**_
 ``` 
 curl -v -H "Content-Type: application/json" -X GET -d "{\"short_url\": \"http://127.0.0.1:8080/rfBd56ti\"}" http://127.0.0.1:8080/$ID
 ```
