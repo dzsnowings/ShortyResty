@@ -14,11 +14,10 @@ To redirect from a shortened URL:
 ## Tests
 _**Example POST request using curl:**_
 ```
-curl -v -H "Content-Type: application/json" -X POST -d "{\"url\": \"http://example.com/verylonguselessURLthatdoesnotseemtoend/123\"}" http://127.0.0.1:8080/shorten
+curl -v -X POST http://127.0.0.1:8080/shorten -H "Content-Type: application/json" -d '{"url": "http://example.com/verylonguselessURLthatdoesnotseemtoend/123"}'
 ```
 Response:
 ```
-Note: Unnecessary use of -X or --request, POST is already inferred.
 *   Trying 127.0.0.1...
 * TCP_NODELAY set
 * Connected to 127.0.0.1 (127.0.0.1) port 8080 (#0)
@@ -27,12 +26,12 @@ Note: Unnecessary use of -X or --request, POST is already inferred.
 > User-Agent: curl/7.55.1
 > Accept: */*
 > Content-Type: application/json
-> Content-Length: 32
+> Content-Length: 72
 >
-* upload completely sent off: 32 out of 32 bytes
+* upload completely sent off: 72 out of 72 bytes
 < HTTP/1.1 201 Created
 < Content-Type: application/json
-< Date: Fri, 26 Feb 2021 06:51:54 GMT
+< Date: Thu, 04 Mar 2021 03:17:30 GMT
 < Content-Length: 47
 <
 {"short_url":"http://127.0.0.1:8080/2SMtYvSg"}
@@ -42,28 +41,25 @@ Note: Unnecessary use of -X or --request, POST is already inferred.
 
 _**Example GET request using curl:**_
 ``` 
-curl -v -H "Content-Type: application/json" -X GET -d "{\"short_url\": \"http://127.0.0.1:8080/rfBd56ti\"}" http://127.0.0.1:8080/$ID
+curl -v -X GET http://127.0.0.1:8080/2SMtYvSg
 ```
 Response:
 ```
 *   Trying 127.0.0.1...
 * TCP_NODELAY set
 * Connected to 127.0.0.1 (127.0.0.1) port 8080 (#0)
-> GET /$ID HTTP/1.1
+> GET /2SMtYvSg HTTP/1.1
 > Host: 127.0.0.1:8080
 > User-Agent: curl/7.55.1
 > Accept: */*
-> Content-Type: application/json
-> Content-Length: 47
 >
-* upload completely sent off: 47 out of 47 bytes
 < HTTP/1.1 302 Found
 < Content-Type: text/html; charset=utf-8
-< Location: http://www.google.com
-< Date: Fri, 26 Feb 2021 06:52:30 GMT
-< Content-Length: 44
+< Location: http://example.com/verylonguselessURLthatdoesnotseemtoend/123
+< Date: Thu, 04 Mar 2021 03:17:59 GMT
+< Content-Length: 84
 <
-<a href="http://www.google.com">Found</a>.
+<a href="http://example.com/verylonguselessURLthatdoesnotseemtoend/123">Found</a>.
 
 * Connection #0 to host 127.0.0.1 left intact
 ```
