@@ -64,10 +64,10 @@ func handleShorten(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(shortUrl)     // Encode the response from a ShortUrl into JSON
 }
 
-// The handleRedirect function takes in a short URL's ID, finds its corresponding LongUrl
+// The handleRedirect function GETs from request's URI, finds its corresponding LongUrl
 // using the urlMap, and redirects to the long form of the URL
 func handleRedirect(w http.ResponseWriter, r *http.Request) {
-	var id string = strings.TrimPrefix(r.RequestURI, "/")       // Trims prefix from short URL leaving just the ID
+	var id string = strings.TrimPrefix(r.RequestURI, "/")       // Trims prefix from request URI, leaving just the ID
 	if _, key := urlMap[id]; key {
 		http.Redirect(w, r, urlMap[id].Long_url, 302)       // 302 redirect to the long URL
 	} else {
@@ -88,6 +88,6 @@ func generateID() string {
 
 /*
 For testing purposes:
-curl -v -X POST http://127.0.0.1:8080/shorten -H "Content-Type: application/json" -d '{"url": "http://google.com"}'
+curl -v -X POST http://127.0.0.1:8080/shorten -H "Content-Type: application/json" -d '{"url": "http://example.com/verylonguselessURLthatdoesnotseemtoend/123"}'
 curl -v -X GET http://127.0.0.1:8080/$ID
 */
