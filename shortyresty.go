@@ -71,7 +71,7 @@ func handleRedirect(w http.ResponseWriter, r *http.Request) {
 	if _, key := urlMap[id]; key {
 		http.Redirect(w, r, urlMap[id].Long_url, 302)       // 302 redirect to the long URL
 	} else {
-		w.Write([]byte(requestURI + " is not linked to a long URL."))       // Respond with error message if id is not in urlMap
+		w.Write([]byte(r.RequestURI + " is not linked to a long URL."))       // Respond with error message if id is not in urlMap
 		return
 	}
 }
